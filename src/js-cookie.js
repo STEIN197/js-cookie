@@ -14,7 +14,7 @@ var Cookie = {
 	get: function(key) {
 		if (!document.cookie)
 			return null;
-		var keyValuePairs = document.cookie.split(";");
+		var keyValuePairs = document.cookie.split(/\s*;\s*/g);
 		for (var i in keyValuePairs) {
 			var pair = keyValuePairs[i].split("=");
 			if (pair[0] === key)
@@ -34,7 +34,7 @@ var Cookie = {
 		if (!document.cookie)
 			return {};
 		var result = {};
-		document.cookie.split(";").forEach(function(v, i, a) {
+		document.cookie.split(/\s*;\s*/g).forEach(function(v, i, a) {
 			var pair = v.split("=");
 			result[pair[0]] = pair[1];
 		});
